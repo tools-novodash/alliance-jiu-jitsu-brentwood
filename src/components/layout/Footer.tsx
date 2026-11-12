@@ -32,7 +32,7 @@ export function Footer() {
         <div className="shell find__in">
           <div className="find__head">
             <p className="tag tag--l">Visit the academy</p>
-            <h2 className="t t-1" id="find-h">Find us on <span className="hl">Lone Tree Way.</span></h2>
+            <h2 className="t t-1" id="find-h"><span className="t-ol">Find us</span> on <span className="hl">Lone Tree Way.</span></h2>
             <p>A few minutes from anywhere in Brentwood, and an easy drive from Oakley, Antioch and Discovery Bay.</p>
           </div>
           <div className="find__grid">

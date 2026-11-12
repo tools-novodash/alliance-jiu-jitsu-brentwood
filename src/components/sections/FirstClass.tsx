@@ -25,7 +25,7 @@ export function FirstClass() {
     if (!motionOK()) { setStill(true); setK(N); return }
     const el = root.current!
     const st = ScrollTrigger.create({
-      trigger: el.querySelector('.day__pin')!, start: 'top top', end: () => `+=${innerHeight * 1.5}`, pin: true, anticipatePin: 1,
+      trigger: el.querySelector('.day__pin')!, start: 'top top', end: () => `+=${innerHeight * 1.5}`, pin: true,
       onUpdate: (s) => setK(Math.min(N, Math.floor(s.progress * N) + 1)),
       onLeaveBack: () => setK(0),
     })

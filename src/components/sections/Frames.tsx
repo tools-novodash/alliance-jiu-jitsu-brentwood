@@ -111,7 +111,7 @@ export function Frames() {
         <div className="shell fr__ui">
           <div className="fr__copy">
             <Tag light>The Alliance curriculum</Tag>
-            <h2 id="fr-h" className="t t-1">Taught in order. <span className="hl">The same order in 300 academies.</span></h2>
+            <h2 id="fr-h" className="t t-1">Taught in order. <span className="hl">The same order in <span className="t-ol">300 academies.</span></span></h2>
             <p className="fr__body">Alliance was founded in Rio de Janeiro in 1993 and has won 16 IBJJF world team titles. What reaches Brentwood is the curriculum: modules ordered by belt, taught in the same sequence at every academy on the list.</p>
             <dl className="fr__facts">
               <div><dt>1993</dt><dd>founded in Rio</dd></div>

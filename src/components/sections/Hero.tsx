@@ -31,7 +31,7 @@ export function Hero() {
         </div>
         <div className="hero__copy">
           <div className="hero__in">
-            <h1 id="hero-h" className="t t-hero"><span className="hero__y">{HERO.h1a}</span> {HERO.h1b}</h1>
+            <h1 id="hero-h" className="t t-hero"><span className="hero__y">{HERO.h1a}</span> <span className="t-ol">{HERO.h1o}</span> {HERO.h1b}</h1>
             <p className="hero__sub">{HERO.sub}</p>
             <div className="hero__acts">
               <Cta />

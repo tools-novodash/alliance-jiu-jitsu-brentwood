@@ -31,7 +31,7 @@ export function Coaches() {
         <div className="head head--row">
           <div>
             <Tag light>Coaches</Tag>
-            <h2 id="co-h" className="t t-1">Four coaches. <span className="hl">Two black belts he made himself.</span></h2>
+            <h2 id="co-h" className="t t-1">Four coaches. <span className="hl">Two black belts <span className="t-ol">he made himself.</span></span></h2>
           </div>
           <p className="lead lead--l">At least one coach is on the mat for every class, and most classes have two or three. The beginners class never runs without one.</p>
         </div>

@@ -49,6 +49,9 @@ h1,h2,h3,h4,p,ul,ol,dl,dd,figure,blockquote{margin:0}
 .head__side{display:grid;gap:24px;justify-items:start}
 @media (min-width:1000px){.head--row{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}}
 .ln-mask{padding-block:.14em .2em;margin-block:-.14em -.2em}
+/* between two lines the -.2em and the -.14em collapse into one -.2em, so every split title grew .14em per
+   line break, the page grew, the pins re-measured and the belt jumped (Adryan 12/11: "deu uma bugada") */
+.ln-mask + .ln-mask{margin-top:-.34em}
 
 /* ── buttons: the red block, the white triangle in a darker square, a sweep and a square pulse ── */
 .cta{--h:58px;position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:16px;height:var(--h);padding:0 6px 0 24px;background:var(--r);color:var(--w);
@@ -733,3 +736,12 @@ html.lenis,html.lenis body{height:auto}
 .t .ln-mask{padding-right:.12em;margin-right:-.12em}
 /* class names in italic too (Adryan 12/11): the schedule, the program cards, the frame-by-frame tabs */
 .cls b,.dayslots b,.pc__n,.fr__tab b{font-style:italic;padding-right:.06em}
+/* "he made himself." and "300 academies." (Adryan 12/11): yellow outline only, no fill, a 1.5px line on every screen
+   (he tried 2.4, 4.5 and 3.3 and settled on 1.5) */
+.t-ol{color:transparent;-webkit-text-stroke:1.5px var(--g)}
+/* "Six programs." (Adryan 12/11): the same outline, as thick as the big step number in "Your first class" (2px) */
+.t-ol--2{-webkit-text-stroke:2px var(--k)} /* black line on the white section (Adryan 12/11) */
+/* program cards (Adryan 12/11): "Kids and teens" and the age chip on one line, on every card */
+.pc__tags{display:flex;align-items:center;gap:10px;margin-bottom:14px;white-space:nowrap}
+.pc__tags .pc__kind,.pc__tags .pc__ages{margin:0}
+@media (max-width:360px){.pc__tags{gap:8px}.pc__tags .pc__ages,.pc__tags .pc__kind{letter-spacing:.08em}} /* "14 and up, no experience" fits a 320 phone */

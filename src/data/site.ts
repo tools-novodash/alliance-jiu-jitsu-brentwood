@@ -35,7 +35,8 @@ export const NAV = [
 /* ── hero: one still photo (the flipbook was dropped, Adryan 12/11) ── */
 export const HERO = {
   h1a: 'Five years old or fifty.',
-  h1b: 'The whole family trains here.',
+  h1o: 'The whole family', // yellow outline only (Adryan 12/11)
+  h1b: 'trains here.',
   sub: 'Ricardo Barros opened this academy in 2007 because he wanted one room where everyone in a family could train. Kids from five, adults from fourteen, 38 classes a week.',
   micro: 'Adults get a private intro lesson. Kids join a normal class.',
   // desktop (Adryan 12/11: horizontal, faces to the camera): a kids class sitting in a circle with their coach

@@ -39,7 +39,7 @@ export function Programs() {
         <div className="head head--row">
           <div>
             <Tag>Programs</Tag>
-            <h2 id="pg-h" className="t t-1"><span className="pg__h">Six programs.</span> <span className="pg__h hl">One for every age.</span></h2>
+            <h2 id="pg-h" className="t t-1"><span className="pg__h t-ol t-ol--2">Six programs.</span> <span className="pg__h hl">One for every age.</span></h2>
           </div>
           <div className="head__side">
             <p className="lead">Kids train with kids their age, in three groups. At fourteen they move up to the adult classes, and by then the move is not a shock.</p>
@@ -58,8 +58,10 @@ export function Programs() {
               <div className="pc__ph"><Photo photo={p.photo} sizes="(min-width: 900px) 30vw, 80vw" /></div>
               <div className="pc__b">
                 <Mark className="pc__mk" />
-                <p className="pc__kind">{p.kind === 'kids' ? 'Kids and teens' : 'Adults'}</p>
-                <p className="pc__ages">{p.ages}</p>
+                <div className="pc__tags">
+                  <p className="pc__kind">{p.kind === 'kids' ? 'Kids and teens' : 'Adults'}</p>
+                  <p className="pc__ages">{p.ages}</p>
+                </div>
                 <h3 className="pc__n">{p.name}</h3>
                 <p className="pc__t">{p.text}</p>
                 <div className="pc__per">

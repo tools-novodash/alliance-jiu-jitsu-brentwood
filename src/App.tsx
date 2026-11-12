@@ -33,8 +33,14 @@ export default function App({ route }: { route: Route }) {
     const ro = new ResizeObserver(() => {
       const nh = document.documentElement.scrollHeight
       if (Math.abs(nh - h) < 2) return
-      h = nh; clearTimeout(t); t = window.setTimeout(refresh, 200)
+      h = nh; clearTimeout(t); t = window.setTimeout(settle, 200)
     })
+    // never re-measure while a section is held on screen (the belt, the frames): a refresh then makes the
+    // held section jump; wait until the pin lets go
+    const settle = () => {
+      if (ScrollTrigger.getAll().some((s) => s.pin && s.isActive)) { t = window.setTimeout(settle, 250); return }
+      refresh()
+    }
     ro.observe(document.getElementById('main')!)
     return () => { stopLenis(); ro.disconnect(); clearTimeout(t); document.removeEventListener('click', onClick); removeEventListener('load', refresh) }
   }, [])
