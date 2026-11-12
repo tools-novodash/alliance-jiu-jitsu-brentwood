@@ -1,0 +1,37 @@
+/* Alliance Jiu Jitsu Brentwood · the only file with hex colours.
+   Tailwind 4: theme + utilities only (the reset is in styles/site.css).
+   @imports first, @font-face last (a @font-face between @imports silently drops what follows). */
+@layer theme, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./styles/site.css";
+
+@theme static {
+  /* Alliance: black and the team's yellow (the current site's #febc11). Booking red is Adryan's rule
+     (red button, white mark). Mat: the grey-green of the mats and wall band in the academy's photos. */
+  --color-ink: #0B0B0C;
+  --color-ink-2: #141416;
+  --color-ink-3: #1E1E21;
+  --color-ink-4: #2B2B2F;
+  --color-white: #FFFFFF;
+  --color-paper: #F4F4F1;
+  --color-line: #E2E2DD;
+  --color-mute: #54545A;
+  --color-mute-d: #A7A7AE;
+  --color-gold: #FEBC11;
+  --color-gold-d: #E3A500;
+  --color-red-btn: #D21F1B; /* 5.3:1 under white */
+  --color-red-deep: #A8160F;
+  --color-red-ink: #8C120C;
+  --color-mat: #A3AD9B;
+  --color-mat-2: #939E8B;
+  --color-mat-ink: #2F372C;
+  --color-black: #000000;
+  --color-tick: #1E9E4A; /* the progress card ticks only (Adryan 12/11: green checks) */
+}
+
+@font-face { font-family: "Mona Sans"; src: url("/fonts/mona-sans.woff2") format("woff2"); font-weight: 200 900; font-stretch: 75% 125%; font-style: normal; font-display: block; }
+@font-face { font-family: "Antonio"; src: url("/fonts/antonio.woff2") format("woff2"); font-weight: 100 700; font-style: normal; font-display: block; } /* display (12/11: Mona Sans condensed read like Cristyan's Saira) */
+@font-face { font-family: "Bungee"; src: url("/fonts/bungee.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; } /* the kids progress card only (Adryan 12/11), subset to basic Latin */
+@font-face { font-family: "Mona Fallback"; src: local("Arial"); size-adjust: 100%; ascent-override: 92%; descent-override: 24%; }
+@font-face { font-family: "Antonio Fallback"; src: local("Arial Narrow Bold"), local("Arial Narrow"), local("Arial Bold"); size-adjust: 92%; ascent-override: 118%; descent-override: 28%; }
