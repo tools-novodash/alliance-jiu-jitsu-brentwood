@@ -711,3 +711,25 @@ html.lenis,html.lenis body{height:auto}
   .fr__stage{min-height:560px}
   .fr__ui{padding-bottom:calc(clamp(72px,11svh,110px) / var(--zs,1))}
 }
+
+/* Programs (Adryan 12/11): three whole cards on desktop, no fourth one cut at the edge; the title in two lines */
+@media (min-width:900px){
+  .pg__track{margin-inline:0;padding-inline:0;scroll-padding-inline:0}
+  .pg__h{display:block;white-space:nowrap}
+}
+
+/* hero desktop photo, the kids' circle (Adryan 12/11: higher): taller than the card and pinned to its foot,
+   so the empty wall at the top is cut and the faces sit higher */
+@media (min-width:900px){
+  .hero__film img{position:absolute;left:0;bottom:0;height:118%;transform-origin:70% 100%}
+}
+
+/* titles (Adryan 12/11): every section title and the hero in italic, the hero all white.
+   Antonio has no italic file, so this is the browser's slant of the upright; the line masks of the
+   split titles get room on the right so the slant of the last letter is never clipped */
+.hero__y{color:inherit}
+.t{font-style:italic}
+#hero-h{padding-right:.06em}
+.t .ln-mask{padding-right:.12em;margin-right:-.12em}
+/* class names in italic too (Adryan 12/11): the schedule, the program cards, the frame-by-frame tabs */
+.cls b,.dayslots b,.pc__n,.fr__tab b{font-style:italic;padding-right:.06em}

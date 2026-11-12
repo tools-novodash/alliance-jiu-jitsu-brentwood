@@ -11,7 +11,7 @@ import { Photo } from '../ui/Photo'
 const pad = (n: number) => String(n).padStart(2, '0')
 
 /** All six programs on one track (Adryan, 12/11: carousel in one row, like Cristyan's, but the white
- *  card stays). Three in view on desktop, the next one peeking on phones; arrows, drag, swipe, and a bar
+ *  card stays). Exactly three in view on desktop (Adryan 12/11: no half card at the edge), the next one peeking on phones; arrows, drag, swipe, and a bar
  *  that fills as you go. Kids first, then adults, the age on every card. */
 export function Programs() {
   const root = useRef<HTMLElement>(null)
@@ -39,7 +39,7 @@ export function Programs() {
         <div className="head head--row">
           <div>
             <Tag>Programs</Tag>
-            <h2 id="pg-h" className="t t-1">Six programs. <span className="hl">Every age has its own room.</span></h2>
+            <h2 id="pg-h" className="t t-1"><span className="pg__h">Six programs.</span> <span className="pg__h hl">One for every age.</span></h2>
           </div>
           <div className="head__side">
             <p className="lead">Kids train with kids their age, in three groups. At fourteen they move up to the adult classes, and by then the move is not a shock.</p>

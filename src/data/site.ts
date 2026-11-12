@@ -38,7 +38,8 @@ export const HERO = {
   h1b: 'The whole family trains here.',
   sub: 'Ricardo Barros opened this academy in 2007 because he wanted one room where everyone in a family could train. Kids from five, adults from fourteen, 38 classes a week.',
   micro: 'Adults get a private intro lesson. Kids join a normal class.',
-  photo: img('kids8', 'An Eagle Youth class bowing to their coach on the mats at Alliance Jiu Jitsu Brentwood'),
+  // desktop (Adryan 12/11: horizontal, faces to the camera): a kids class sitting in a circle with their coach
+  photo: img('kids7', 'A kids class sitting in a circle on the mats with their coach at Alliance Jiu Jitsu Brentwood'),
   // phones only (Adryan 12/11: a more vertical photo there): a coach tying a kid's belt
   tall: img('ig_belt_kid', "A coach tying a young student's belt on the mats at Alliance Jiu Jitsu Brentwood"),
 }
@@ -91,7 +92,7 @@ export const SEQS: Seq[] = [
       f('takedown4', 'Drive through', [{ k: 'ring', x: 39, y: 67, rx: 7, ry: 9 }, { k: 'arrow', d: [26, 58, 33, 50, 44, 52] }]),
       f('takedown5', 'Lift and turn', [{ k: 'arrow', d: [62, 30, 70, 50, 60, 70] }]),
       f('takedown6', 'Down together', [{ k: 'ring', x: 50, y: 78, rx: 13, ry: 11 }]),
-      f('takedown7', 'Land', [{ k: 'ring', x: 95, y: 55, rx: 6, ry: 30 }, { k: 'note', x: 86, y: 18, t: 'coach on the mat', a: 'r' }]),
+      f('takedown7', 'Land', [{ k: 'ring', x: 95, y: 55, rx: 6, ry: 30 }, { k: 'note', x: 86, y: 36, t: 'coach on the mat', a: 'r' }]),
     ],
   },
   {

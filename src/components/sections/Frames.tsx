@@ -65,13 +65,18 @@ export function Frames() {
     return () => io.disconnect()
   }, [])
 
-  // a tab swaps the program in place, at the frame the scroll is on; a timeline frame scrolls to it
+  // a tab swaps the program in place and starts it from its first frame (Adryan 12/11: opening Eagle Youth
+  // on its last frame skipped the whole move): the scroll goes back to the top of the hold in one jump,
+  // the stage stays still on screen because it is pinned; a timeline frame scrolls to it
   const pick = (next: number) => {
     si.current = next
+    setPos({ si: next, fi: 0 })
     const s = st.current
-    const n = SEQS[next].frames.length
-    const fi = s && s.isActive ? Math.min(n - 1, Math.floor(s.progress * n)) : 0
-    setPos({ si: next, fi })
+    if (!s || !s.isActive) return
+    const y = s.start + 1
+    const l = window.__lenis
+    if (l) l.scrollTo(y, { immediate: true, force: true })
+    else window.scrollTo({ top: y, behavior: 'instant' })
   }
   const jump = (fi: number) => {
     const s = st.current
