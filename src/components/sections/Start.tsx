@@ -55,8 +55,16 @@ export function Start() {
     const on = () => { raf ||= requestAnimationFrame(read) }
     const size = () => { measure(); on() }
     measure(); read()
-    addEventListener('scroll', on, { passive: true }); addEventListener('resize', size)
-    return () => { removeEventListener('scroll', on); removeEventListener('resize', size); cancelAnimationFrame(raf) }
+    // listen to the scroll only while the chat is within a screen of the viewport
+    let live = false
+    const gate = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting === live) return
+      live = e.isIntersecting
+      if (live) { addEventListener('scroll', on, { passive: true }); on() } else { removeEventListener('scroll', on); on() }
+    }, { rootMargin: '100% 0px 100% 0px' })
+    gate.observe(el)
+    addEventListener('resize', size)
+    return () => { gate.disconnect(); removeEventListener('scroll', on); removeEventListener('resize', size); cancelAnimationFrame(raf) }
   }, [])
   // the beats follow the reader: the normal rhythm while they read, a quick catch-up when they scrolled ahead
   useEffect(() => {

@@ -15,21 +15,40 @@ export function Nav() {
   const [hide, setHide] = useState(false)
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
+  // scroll: only scrollY is read (no layout), so the bar never forces a reflow inside a smooth-scroll frame
   useEffect(() => {
     let raf = 0, last = scrollY
     const read = () => {
       raf = 0
-      const nav = ref.current!, r = nav.querySelector('.nav__in')!.getBoundingClientRect()
-      const under = document.elementsFromPoint(innerWidth / 2, r.top + r.height / 2).find((e) => !nav.contains(e))
-      setDark(!!under?.closest('[data-nav="dark"]'))
       const y = scrollY
       setSolid(y > 40)
       if (Math.abs(y - last) > 6) { setHide(y > last && y > 240); last = y }
     }
     const on = () => { raf ||= requestAnimationFrame(read) }
     read()
-    addEventListener('scroll', on, { passive: true }); addEventListener('resize', on)
-    return () => { removeEventListener('scroll', on); removeEventListener('resize', on); cancelAnimationFrame(raf) }
+    addEventListener('scroll', on, { passive: true })
+    return () => { removeEventListener('scroll', on); cancelAnimationFrame(raf) }
+  }, [])
+  // what is under the bar: an IntersectionObserver on a 1px line at the bar's middle, instead of hit-testing
+  // the page on every scroll frame (Adryan 12/11: the scroll stuttered now and then)
+  useEffect(() => {
+    const nav = ref.current!
+    const under = new Set<Element>()
+    let io: IntersectionObserver | null = null
+    const make = () => {
+      io?.disconnect(); under.clear()
+      const mid = Math.round(nav.querySelector('.nav__in')!.getBoundingClientRect().height / 2)
+      io = new IntersectionObserver((es) => {
+        es.forEach((e) => (e.isIntersecting ? under.add(e.target) : under.delete(e.target)))
+        setDark(under.size > 0)
+      }, { rootMargin: `-${mid}px 0px -${Math.max(0, innerHeight - mid - 1)}px 0px` })
+      document.querySelectorAll('[data-nav="dark"]').forEach((el) => { if (!nav.contains(el)) io!.observe(el) })
+    }
+    make()
+    let t = 0
+    const size = () => { clearTimeout(t); t = window.setTimeout(make, 150) }
+    addEventListener('resize', size)
+    return () => { removeEventListener('resize', size); clearTimeout(t); io?.disconnect() }
   }, [])
   useEffect(() => { document.documentElement.classList.toggle('menu-open', open) }, [open])
 

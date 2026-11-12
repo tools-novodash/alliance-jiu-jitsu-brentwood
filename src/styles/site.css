@@ -86,9 +86,9 @@ h1,h2,h3,h4,p,ul,ol,dl,dd,figure,blockquote{margin:0}
 .nav__in{height:calc(64px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) var(--gr) 0 var(--gl);display:flex;align-items:center;gap:8px;color:var(--k);transition:color .3s ease,background-color .3s ease,box-shadow .3s ease}
 /* the bar spans the screen, its content lines up with the page column (.shell: 1320 max, 40 gutters) */
 @media (min-width:768px){.nav__in{padding-left:max(40px,calc((100% - 1320px) / 2 + 40px));padding-right:max(40px,calc((100% - 1320px) / 2 + 40px))}}
-.nav.is-solid .nav__in{background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(11,11,12,.08)}
+.nav.is-solid .nav__in{background:rgba(255,255,255,.97);box-shadow:0 1px 0 rgba(11,11,12,.08)} /* no backdrop blur: re-blurring the page under a fixed bar every frame stuttered the scroll on weaker GPUs */
 .nav.is-dark .nav__in{color:var(--w)}
-.nav.is-dark.is-solid .nav__in{background:rgba(11,11,12,.86);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.nav.is-dark.is-solid .nav__in{background:rgba(11,11,12,.95);box-shadow:0 1px 0 rgba(255,255,255,.08)}
 .nav__logo{display:flex;align-items:center;gap:11px;min-height:44px;text-decoration:none}
 .nav__mk{width:36px;height:auto}
 .nav__wm b{display:block;font:900 16px/1 var(--f-d);font-stretch:80%;text-transform:uppercase;letter-spacing:.01em}
@@ -679,3 +679,28 @@ html.still .rc__stamp{animation:none;opacity:.92;transform:rotate(-9deg)}
 @media (max-width:899px){.rc__stamp{right:-6px;bottom:-30px;padding:10px 14px 11px}.rc__stamp b{font-size:21px}}
 /* short phones: the pinned belt still fits one screen (the booking button is right above and below it) */
 @media (max-width:899px) and (max-height:720px){.day:not(.is-still) .day__go{display:none}.day__pin{padding-top:72px}.day__belt{margin:18px 0 22px -10vw}}
+
+/* ── the hero card no longer runs edge to edge (Adryan 12/11, the Genesis proportion): it is as wide as the
+   nav's column, from the logo to the phone (1240px × the ultrawide zoom), and the copy sits inset inside it ── */
+@media (min-width:900px){
+  .hero__card{max-width:calc(1240px * var(--z,1));margin-inline:auto}
+  .hero__copy{grid-column:1/-1;padding-left:clamp(32px,5vw,calc(104px * var(--z,1)))}
+  #hero-h{width:min-content} /* as wide as the gold line, so the white part wraps under it */
+}
+
+/* ── custom scrollbar (Adryan 12/11): a square ink thumb on a paper track, gold while you hold it.
+   Chromium and Safari take the ::-webkit rules; Firefox (no ::-webkit-scrollbar) gets the standard pair. ── */
+html::-webkit-scrollbar{width:12px;height:12px}
+html::-webkit-scrollbar-track{background:var(--pa);box-shadow:inset 1px 0 0 var(--line)}
+html::-webkit-scrollbar-thumb{background:var(--k);border:3px solid var(--pa);border-radius:0;min-height:64px}
+html::-webkit-scrollbar-thumb:hover{background:#2a2a2d}
+html::-webkit-scrollbar-thumb:active{background:var(--g)}
+@supports not selector(::-webkit-scrollbar){html{scrollbar-width:thin;scrollbar-color:var(--k) var(--pa)}}
+
+/* ── Lenis (smooth scroll): its own stylesheet was never imported. Without it an iframe under the wheel
+   (the footer map) swallows the scroll and the page stops; a stopped Lenis must also clip native scroll ── */
+html.lenis,html.lenis body{height:auto}
+.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+.lenis [data-lenis-prevent],.lenis [data-lenis-prevent-wheel],.lenis [data-lenis-prevent-touch]{overscroll-behavior:contain}
+.lenis.lenis-smooth iframe{pointer-events:none}
+.lenis.lenis-autoToggle{transition-property:overflow;transition-duration:1ms;transition-behavior:allow-discrete}

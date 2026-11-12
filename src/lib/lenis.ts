@@ -5,7 +5,7 @@ declare global { interface Window { __lenis?: Lenis | null } }
 
 /** Smooth scroll on the GSAP ticker, so ScrollTrigger and Lenis read the same frame (PRD 14). */
 export function startLenis() {
-  const lenis = new Lenis({ lerp: 0.1 })
+  const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 1 }) // a touch silkier than the 0.1 default (Adryan 12/11)
   window.__lenis = lenis
   lenis.on('scroll', ScrollTrigger.update)
   const tick = (t: number) => lenis.raf(t * 1000)
