@@ -51,7 +51,7 @@ export function Parents() {
             </header>
             <div className="rc__title">
               <h3>Progress card</h3>
-              <p className="rc__meta"><span>Name</span><i aria-hidden="true" /><span>Ages</span><b>5 to 13</b></p>
+              <p className="rc__meta"><span>Name</span><i aria-hidden="true" /><span>Ages</span><b>5 to 14</b></p>
             </div>
             <ol className="rc__list" role="list">
               {PARENTS.rows.map((r, i) => (

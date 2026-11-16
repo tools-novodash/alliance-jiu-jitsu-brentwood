@@ -10,7 +10,7 @@ import { Photo } from '../ui/Photo'
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
-/** All six programs on one track (Adryan, 12/11: carousel in one row, like Cristyan's, but the white
+/** All the programs on one track (Adryan, 12/11: carousel in one row, like Cristyan's, but the white
  *  card stays). Exactly three in view on desktop (Adryan 12/11: no half card at the edge), the next one peeking on phones; arrows, drag, swipe, and a bar
  *  that fills as you go. Kids first, then adults, the age on every card. */
 export function Programs() {
@@ -39,10 +39,10 @@ export function Programs() {
         <div className="head head--row">
           <div>
             <Tag>Programs</Tag>
-            <h2 id="pg-h" className="t t-1"><span className="pg__h t-ol t-ol--2">Six programs.</span> <span className="pg__h hl">One for every age.</span></h2>
+            <h2 id="pg-h" className="t t-1"><span className="pg__h t-ol t-ol--2">Four programs.</span> <span className="pg__h hl">One for every age.</span></h2>
           </div>
           <div className="head__side">
-            <p className="lead">Kids train with kids their age, in three groups. At fourteen they move up to the adult classes, and by then the move is not a shock.</p>
+            <p className="lead">Kids train with kids their age, in three groups. After the teens class they move up to the adult classes, and by then the move is not a shock.</p>
             <div className="pg__ctl">
               <Cta />
               <div className="pg__nav">
@@ -54,7 +54,7 @@ export function Programs() {
         </div>
         <ul className="pg__track" role="list" ref={ref}>
           {PROGRAMS.map((p) => (
-            <li key={p.name} className="pc">
+            <li key={p.name + p.ages} className="pc">
               <div className="pc__ph"><Photo photo={p.photo} sizes="(min-width: 900px) 30vw, 80vw" /></div>
               <div className="pc__b">
                 <Mark className="pc__mk" />

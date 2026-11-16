@@ -68,7 +68,7 @@ export function Footer() {
         </div>
         <nav className="foot__col" aria-label="Programs">
           <p className="foot__h">Programs</p>
-          {PROGRAMS.map((p) => <a key={p.name} href="#programs">{p.name}</a>)}
+          {PROGRAMS.map((p) => <a key={p.name + p.ages} href="#programs">{p.name}, {p.ages.toLowerCase()}</a>)}
         </nav>
         <nav className="foot__col" aria-label="On this page">
           <p className="foot__h">The academy</p>

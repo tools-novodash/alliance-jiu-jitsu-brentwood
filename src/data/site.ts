@@ -37,7 +37,7 @@ export const HERO = {
   h1a: 'Five years old or fifty.',
   h1o: 'The whole family', // yellow outline only (Adryan 12/11)
   h1b: 'trains here.',
-  sub: 'Ricardo Barros opened this academy in 2007 because he wanted one room where everyone in a family could train. Kids from five, adults from fourteen, 38 classes a week.',
+  sub: 'Ricardo Barros opened this academy in 2007 because he wanted one room where everyone in a family could train. Kids from five, teens from eleven, adults of every level, six days a week.',
   micro: 'Adults get a private intro lesson. Kids join a normal class.',
   // desktop (Adryan 12/11: horizontal, faces to the camera): a kids class sitting in a circle with their coach
   photo: img('kids7', 'A kids class sitting in a circle on the mats with their coach at Alliance Jiu Jitsu Brentwood'),
@@ -47,13 +47,13 @@ export const HERO = {
 
 /* ── programs ── */
 export type ProgramCard = { name: string; ages: string; per: number; text: string; photo: ReturnType<typeof img>; kind: 'kids' | 'adults' }
+// The four classes of the academy's live schedule (Novo Dash app, 12/11/2026; Adryan: adjust the copy to it).
+// Names, ages and classes a week follow the schedule section, which reads that same schedule live.
 export const PROGRAMS: ProgramCard[] = [
-  { kind: 'kids', name: 'Little Eagles', ages: 'Ages 5 to 7', per: 8, text: 'Forty-five minutes of games that happen to be jiu jitsu: balance, listening, and learning to fall without worrying about it.', photo: img('ig_frog_jumps', 'Little Eagles sitting along the wall while their coach shows a frog jump') },
-  { kind: 'kids', name: 'Eagle Warrior', ages: 'Ages 8 to 10', per: 6, text: 'Real technique for kids old enough to work at it. Positions, escapes and controlled rolling, every weekday at 5 PM and Saturday morning.', photo: img('kids4', 'Two Eagle Warrior kids gripping up on the feet while a black belt coach walks the mat') },
-  { kind: 'kids', name: 'Eagle Youth', ages: 'Ages 11 to 13', per: 5, text: 'The kids program that asks the most. Full classes with live rounds, two mornings, two evenings and Saturday.', photo: img('kids5', 'An Eagle Youth student holding a partner in side control during a live round') },
-  { kind: 'adults', name: 'Fundamentals', ages: '14 and up, no experience', per: 7, text: 'Where everyone starts. Beginners only, no sparring, and never without a coach on the mat.', photo: img('fundamentals3', 'A student in a blue gi working from the top while his partner defends') },
-  { kind: 'adults', name: 'Intermediate', ages: '14 and up, 2 stripes', per: 8, text: 'Finer detail and live sparring to test it. Most people keep training Fundamentals alongside it.', photo: img('training6', 'A student working an open guard against a standing partner') },
-  { kind: 'adults', name: 'Comp Team', ages: 'Inside Intermediate', per: 3, text: 'Longer rounds, tournament rules and scoring. Nobody has to compete to train here, and most people do not.', photo: img('training7', 'Two students sparring, one working for control from the top') },
+  { kind: 'kids', name: 'Kids BJJ', ages: 'Ages 5 to 7', per: 2, text: 'Games that happen to be jiu jitsu: balance, listening, and learning to fall without worrying about it.', photo: img('ig_frog_jumps', 'Young kids sitting along the wall while their coach shows a frog jump') },
+  { kind: 'kids', name: 'Kids BJJ', ages: 'Ages 8 to 10', per: 2, text: 'Real technique for kids old enough to work at it. Positions, escapes and controlled rolling.', photo: img('kids4', 'Two kids gripping up on the feet while a black belt coach walks the mat') },
+  { kind: 'kids', name: 'Teens BJJ', ages: 'Ages 11 to 14', per: 2, text: 'The kids program that asks the most. Full classes with live rounds.', photo: img('kids5', 'A teen student holding a partner in side control during a live round') },
+  { kind: 'adults', name: 'Adults BJJ', ages: 'All levels', per: 6, text: 'Every level on the same mat, never without a coach. Beginners start on the fundamentals and do not spar for their first sixty classes.', photo: img('fundamentals3', 'A student in a blue gi working from the top while his partner defends') },
 ]
 
 /* ── starting as an adult ── */
@@ -61,12 +61,12 @@ export const START = {
   tag: 'Starting as an adult',
   h2a: 'You do not spar',
   h2b: 'until you have sixty classes behind you.',
-  lead: 'Fundamentals is a sixty class curriculum, taught seven times a week. Around the end of it your second stripe lands, and only then does sparring start.',
+  lead: 'Your first sixty classes are the fundamentals curriculum. Around the end of it your second stripe lands, and only then does sparring start.',
   items: [
-    { q: 'I have never done anything like this.', a: 'Nobody in Fundamentals has done much more. The class is beginners only.' },
+    { q: 'I have never done anything like this.', a: 'Everyone on the mat started exactly there, and a coach is on the mat for every class.' },
     { q: 'I will look stupid in front of everyone.', a: 'Your first class is a private lesson: you and a coach, at your pace, every question answered on the spot.' },
     { q: 'I am not in shape.', a: 'There is no fitness requirement. The room has people in their twenties and people in their fifties.' },
-    { q: 'I will get hurt.', a: 'No sparring in Fundamentals. You drill with a partner giving light resistance while a coach walks the room.' },
+    { q: 'I will get hurt.', a: 'No sparring in your first sixty classes. You drill with a partner giving light resistance while a coach walks the room.' },
     { q: 'What do I need to buy?', a: 'Nothing for the first class. Shorts or leggings and a t-shirt. A gi only once you have decided to stay.' },
   ],
 }
@@ -84,10 +84,10 @@ const f = (name: string, label: string, marks: Mk[], alt = ''): Frame => ({ phot
 
 export const SEQS: Seq[] = [
   {
-    id: 'warrior', program: 'Eagle Warrior', ages: 'Ages 8 to 10', move: 'A takedown', ratio: 1600 / 1155,
+    id: 'warrior', program: 'Kids BJJ', ages: 'Ages 8 to 10', move: 'A takedown', ratio: 1600 / 1155,
     line: 'Real technique, taken all the way to the mat, with a black belt watching from two steps away.',
     frames: [
-      f('takedown1', 'Face off', [{ k: 'ring', x: 27, y: 45, rx: 9, ry: 12 }, { k: 'note', x: 28, y: 22, t: 'hands up', a: 'l' }], 'Two Eagle Warrior kids, one in a black gi and one in blue, squaring up on the mats'),
+      f('takedown1', 'Face off', [{ k: 'ring', x: 27, y: 45, rx: 9, ry: 12 }, { k: 'note', x: 28, y: 22, t: 'hands up', a: 'l' }], 'Two kids, one in a black gi and one in blue, squaring up on the mats'),
       f('takedown2', 'Step in', [{ k: 'arrow', d: [26, 34, 34, 26, 41, 36] }]),
       f('takedown3', 'Change level', [{ k: 'arrow', d: [32, 50, 30, 60, 35, 70] }, { k: 'ring', x: 37, y: 85, rx: 6, ry: 5 }, { k: 'note', x: 16, y: 88, t: 'knee down', a: 'l' }]),
       f('takedown4', 'Drive through', [{ k: 'ring', x: 39, y: 67, rx: 7, ry: 9 }, { k: 'arrow', d: [26, 58, 33, 50, 44, 52] }]),
@@ -97,10 +97,10 @@ export const SEQS: Seq[] = [
     ],
   },
   {
-    id: 'youth', program: 'Eagle Youth', ages: 'Ages 11 to 13', move: 'A hip throw', ratio: 1200 / 907,
+    id: 'youth', program: 'Teens BJJ', ages: 'Ages 11 to 14', move: 'A hip throw', ratio: 1200 / 907,
     line: 'Breakfalls come first, and nobody throws anybody until both of them can land.',
     frames: [
-      f('hipthrow1', 'Grip', [{ k: 'ring', x: 34, y: 46, rx: 10, ry: 9 }, { k: 'note', x: 50, y: 30, t: 'grips first', a: 'l' }], 'An Eagle Youth student in a white gi gripping a partner in blue before a hip throw'),
+      f('hipthrow1', 'Grip', [{ k: 'ring', x: 34, y: 46, rx: 10, ry: 9 }, { k: 'note', x: 50, y: 30, t: 'grips first', a: 'l' }], 'A teen student in a white gi gripping a partner in blue before a hip throw'),
       f('hipthrow2', 'Turn in', [{ k: 'arrow', d: [52, 64, 48, 76, 36, 70] }]),
       f('hipthrow3', 'Hip under', [{ k: 'ring', x: 30, y: 66, rx: 9, ry: 10 }, { k: 'note', x: 44, y: 86, t: 'hip lower than his', a: 'l' }]),
       f('hipthrow4', 'Over the hip', [{ k: 'arrow', d: [10, 40, 32, 22, 54, 50] }]),
@@ -114,11 +114,11 @@ export const PARENTS = {
   tag: 'For parents',
   h2a: 'What shows up',
   h2b: 'at home first.',
-  lead: 'Three kids programs, five to thirteen. The technique stays on the mat; this is what comes home.',
+  lead: 'Three kids and teens classes, five to fourteen. The technique stays on the mat; this is what comes home.',
   // the progress card (Adryan 12/11): each habit and, in a few words, where it starts on the mat (the current site)
   rows: [
-    { t: 'Listening the first time.', note: 'Little Eagles: forty-five minutes, mostly framed as games.' },
-    { t: 'Waiting their turn.', note: 'Eagle Warrior: the class has a shape and they hold it.' },
+    { t: 'Listening the first time.', note: 'Ages 5 to 7: the class is mostly framed as games.' },
+    { t: 'Waiting their turn.', note: 'Ages 8 to 10: the class has a shape and they hold it.' },
     { t: 'Shaking a hand and looking at the person.', note: 'Every class: none of it can be done alone.' },
     { t: 'Coming back the week after a\nclass that did not go their way.', note: 'Every class: they lose rounds, and come back.' },
   ],
@@ -147,39 +147,21 @@ export const TEAM = [
   { name: 'Abigail Gordon', belt: 'Brown belt', from: 'under Ricardo since 2005', photo: img('abigail_gordon', 'Abigail Gordon, brown belt instructor'), text: 'A special education teacher who adapts what she teaches to the student in front of her, and wants girls to feel the mat is theirs too.' },
 ]
 
-/* ── schedule (the current site, checked program page by program page) ── */
-export type Slot = { t: string; p: string; ages: string; kids?: boolean }
-const LE = { p: 'Little Eagles', ages: '5 to 7', kids: true }
-const EW = { p: 'Eagle Warrior', ages: '8 to 10', kids: true }
-const EY = { p: 'Eagle Youth', ages: '11 to 13', kids: true }
-const FU = { p: 'Fundamentals', ages: '14+, beginners' }
-const IN = { p: 'Intermediate', ages: '14+, 2 stripes' }
-const CT = { p: 'Comp Team', ages: '14+' }
-const NG = { p: 'No Gi', ages: '14+' }
-export const WEEK: { d: string; short: string; slots: Slot[] }[] = [
-  { d: 'Monday', short: 'Mon', slots: [{ t: '10:00 AM', ...LE }, { t: '11:00 AM', ...IN }, { t: '4:15 PM', ...LE }, { t: '5:00 PM', ...EW }, { t: '6:00 PM', ...FU }, { t: '6:00 PM', ...CT }, { t: '7:00 PM', ...IN }] },
-  { d: 'Tuesday', short: 'Tue', slots: [{ t: '6:00 AM', ...IN }, { t: '10:00 AM', ...EY }, { t: '11:00 AM', ...FU }, { t: '4:15 PM', ...LE }, { t: '5:00 PM', ...EW }, { t: '6:00 PM', ...EY }, { t: '7:00 PM', ...FU }, { t: '7:00 PM', ...IN }] },
-  { d: 'Wednesday', short: 'Wed', slots: [{ t: '6:00 AM', ...IN }, { t: '10:00 AM', ...LE }, { t: '11:00 AM', ...IN }, { t: '4:15 PM', ...LE }, { t: '5:00 PM', ...EW }, { t: '6:00 PM', ...FU }, { t: '6:00 PM', ...CT }, { t: '7:00 PM', ...NG }] },
-  { d: 'Thursday', short: 'Thu', slots: [{ t: '10:00 AM', ...EY }, { t: '11:00 AM', ...FU }, { t: '4:15 PM', ...LE }, { t: '5:00 PM', ...EW }, { t: '6:00 PM', ...EY }, { t: '7:00 PM', ...FU }, { t: '7:00 PM', ...IN }] },
-  { d: 'Friday', short: 'Fri', slots: [{ t: '11:00 AM', ...IN }, { t: '4:15 PM', ...LE }, { t: '5:00 PM', ...EW }, { t: '6:00 PM', ...CT }] },
-  { d: 'Saturday', short: 'Sat', slots: [{ t: '9:00 AM', ...LE }, { t: '9:00 AM', ...EW }, { t: '10:00 AM', ...EY }, { t: '11:00 AM', ...FU }] },
-]
-
 /* ── first class: one general path in four steps (Adryan 12/11: no tabs per audience) ── */
 export const STEPS = [
   { t: 'Get in touch', p: 'Fill in the form or call. Tell us who is training, an adult or a child, and roughly when in the week you are free.' },
   { t: 'Wear something you can move in', p: 'Shorts or leggings and a t-shirt. There is nothing to buy before you come.' },
   { t: 'Your first class', p: 'Adults get a private lesson with a coach, at their own pace. Kids go straight into a normal class with kids their age.' },
-  { t: 'Then keep going', p: 'Adults move on to Fundamentals: beginners only, no sparring. Kids keep their class, and parents can watch any of them. A gi only once you have decided to stay.' },
+  { t: 'Then keep going', p: 'Adults join the adult classes, with no sparring for the first sixty. Kids keep their class, and parents can watch any of them. A gi only once you have decided to stay.' },
 ]
 
 /* ── FAQ: the questions in the voice of the fear ── */
 export const FAQ = [
-  { q: 'I have never trained. Is this the wrong place to start?', a: 'It is where everyone starts. Fundamentals is beginners only, runs seven times a week, and your first class is a private lesson with a coach.' },
-  { q: 'Will I have to spar?', a: 'Not in Fundamentals. Sparring starts in Intermediate, after the sixty classes that earn your second stripe.' },
+  { q: 'I have never trained. Is this the wrong place to start?', a: 'It is where everyone starts. Your first class is a private lesson with a coach, and the adult classes are open to every level.' },
+  { q: 'Will I have to spar?', a: 'Not at first. Sparring starts after the sixty classes that earn your second stripe.' },
   { q: 'Am I too old for this?', a: 'The adult room has people in their twenties and people in their fifties, people who did a martial art twenty years ago and people who have never done anything.' },
-  { q: 'My child is five. Is that too young?', a: 'Five is where Little Eagles starts: forty-five minutes, built around how long a six year old can hold their attention.' },
+  { q: 'My child is five. Is that too young?', a: 'Five is where the youngest kids class starts, ages 5 to 7, built around how long a six year old can hold their attention.' },
   { q: 'Can I stay and watch my kid?', a: 'Yes. Parents are welcome to sit and watch any class.' },
-  { q: 'Do I have to compete?', a: 'No. Comp Team is there if you want it, three evenings a week. Most people here never compete.' },
+  { q: 'Do I have to compete?', a: 'No. Nobody has to compete to train here, and most people never do.' },
   { q: 'Who teaches the classes?', a: 'Ricardo Barros and the coaches he trained: two black belts who earned the belt from him and a brown belt who has trained with him since 2005. At least one coach is on the mat for every class, most have two or three.' },
 ]

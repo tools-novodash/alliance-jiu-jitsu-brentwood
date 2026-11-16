@@ -8,7 +8,7 @@ export const ROUTES: Route[] = [
   {
     path: '/',
     title: 'Jiu Jitsu in Brentwood, CA for Kids and Adults | Alliance Jiu Jitsu Brentwood',
-    description: 'Alliance Jiu Jitsu on Lone Tree Way, Brentwood: kids classes from age 5, adult Fundamentals for beginners, 38 classes a week. Your first class is free.',
+    description: 'Alliance Jiu Jitsu on Lone Tree Way, Brentwood: kids classes from age 5, teens, and adult classes for every level, six days a week. Your first class is free.',
     page: () => <Home />,
   },
 ]

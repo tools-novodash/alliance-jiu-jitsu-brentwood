@@ -745,3 +745,47 @@ html.lenis,html.lenis body{height:auto}
 .pc__tags{display:flex;align-items:center;gap:10px;margin-bottom:14px;white-space:nowrap}
 .pc__tags .pc__kind,.pc__tags .pc__ages{margin:0}
 @media (max-width:360px){.pc__tags{gap:8px}.pc__tags .pc__ages,.pc__tags .pc__kind{letter-spacing:.08em}} /* "14 and up, no experience" fits a 320 phone */
+
+/* For parents in one screen on desktop (Adryan 12/11: 100vh). Shorter paddings tied to the screen height and a
+   tighter progress card; the section is at least one screen tall and any spare room goes above the title,
+   so the cutout keeps standing on the bottom edge and Connor's head stays level with the card's top. */
+@media (min-width:900px){
+  .pa{--pb:clamp(36px,calc(5svh / var(--zs,1)),64px);display:flex;flex-direction:column;justify-content:flex-end;min-height:calc(100svh / var(--zs,1));padding-top:clamp(44px,calc(6.5svh / var(--zs,1)),84px)}
+  .pa .head{margin-bottom:clamp(20px,calc(3svh / var(--zs,1)),40px)}
+  .pa__grid{padding-top:14px}
+  .rc__top{padding:11px 20px}
+  .rc__title{padding:12px 22px 10px}
+  .rc__title h3{font-size:clamp(26px,2.3vw,38px)}
+  .rc__list{padding:2px 22px 40px}
+  .rc__row{padding:clamp(7px,calc(1.1svh / var(--zs,1)),14px) 0}
+  .rc__note{margin-top:3px}
+  .rc__box{width:40px;height:40px}
+}
+
+/* schedule live from the kit (useSchedule): a skeleton of the same size while it loads, so the page does
+   not jump when the classes arrive; the board keeps at least six rows of height */
+@media (min-width:1000px){.sch__live .board{position:relative;min-height:calc(62px + 6 * 64px)}}
+.dayslots{min-height:calc(4 * 66px + 12px)}
+.sk i{display:block;height:14px;background:linear-gradient(90deg,var(--pa) 0,var(--line) 50%,var(--pa) 100%);background-size:200% 100%;animation:sk 1.4s linear infinite}
+.board tr.sk td i{height:40px;margin:7px 2px}
+.board tr.sk th i{width:60%}
+.dayslots li.sk{display:flex;align-items:center;min-height:66px;border-bottom:1px solid var(--line)}
+.dayslots li.sk i{width:70%}
+@keyframes sk{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk i{animation:none}}
+.sch__loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:8px 14px;background:var(--w);box-shadow:0 0 0 1px var(--line);font:800 12px/1 var(--f-d);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.sch__err{padding:28px 0 8px}
+.daytabs button:disabled{opacity:.5}
+
+/* the Novo Dash booking form in the page's look (kit step 5): the red booking button, the ink panel,
+   Mona Sans for text and Antonio upper case for titles, square buttons like the page's */
+.nd{
+  --nd-accent:#D21F1B;
+  --nd-accent-ink:#FFFFFF;
+  --nd-panel:#0B0B0C;
+  --nd-font:"Mona Sans","Mona Fallback","Helvetica Neue",Arial,sans-serif;
+  --nd-font-display:"Antonio","Antonio Fallback","Arial Narrow",sans-serif;
+  --nd-display-case:uppercase;
+  --nd-display-weight:700;
+  --nd-button-radius:0px;
+}

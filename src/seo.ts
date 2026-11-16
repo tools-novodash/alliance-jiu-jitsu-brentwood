@@ -1,4 +1,4 @@
-import { FAQ, HEAD, PROGRAMS, SITE, TEAM, WEEK } from './data/site'
+import { FAQ, HEAD, PROGRAMS, SITE, TEAM } from './data/site'
 import type { Route } from './routes'
 
 declare const __SITE__: string
@@ -20,10 +20,10 @@ export function jsonLd(_route: Route) {
       {
         '@type': 'SportsActivityLocation', '@id': `${ORIGIN}/#academy`, name: SITE.name, url: `${ORIGIN}/`,
         image: `${ORIGIN}/og-image.jpg`, logo: `${ORIGIN}/images/logo-light.svg`, telephone: '+19255658211', email: SITE.email,
-        description: 'Alliance Jiu Jitsu academy on Lone Tree Way in Brentwood, CA: kids programs from age 5 (Little Eagles, Eagle Warrior, Eagle Youth) and adult classes from 14 (Fundamentals, Intermediate, Comp Team). Head instructor Ricardo Barros, black belt since 2003. First class free.',
+        description: 'Alliance Jiu Jitsu academy on Lone Tree Way in Brentwood, CA: kids classes from age 5 (ages 5 to 7 and 8 to 10), teens from 11 to 14, and adult classes for every level. Head instructor Ricardo Barros, black belt since 2003. First class free.',
         address: { '@type': 'PostalAddress', streetAddress: SITE.street, addressLocality: 'Brentwood', addressRegion: 'CA', postalCode: '94513', addressCountry: 'US' },
         areaServed: ['Brentwood, CA', 'Oakley, CA', 'Antioch, CA', 'Discovery Bay, CA'],
-        sport: 'Brazilian Jiu-Jitsu', knowsAbout: PROGRAMS.map((p) => p.name), foundingDate: '2007-01',
+        sport: 'Brazilian Jiu-Jitsu', knowsAbout: [...new Set(PROGRAMS.map((p) => p.name))], foundingDate: '2007-01',
         openingHoursSpecification: HOURS.map((h) => ({ '@type': 'OpeningHoursSpecification', dayOfWeek: h.d.map((d) => `https://schema.org/${d}`), opens: h.o, closes: h.c })),
         sameAs: [SITE.instagram, SITE.facebook],
         founder: { '@id': `${ORIGIN}/#ricardo` },
@@ -41,7 +41,7 @@ export function jsonLd(_route: Route) {
 export function llms() {
   return `# ${SITE.name}
 
-> Alliance Jiu Jitsu academy in Brentwood, California, open since January 2007. Kids classes from age 5 in three age groups, adult classes from age 14, 38 classes a week, Monday to Saturday. Head instructor Ricardo Barros, black belt from Ralph Gracie (2003). First class free: adults get a private intro lesson, kids join a normal class.
+> Alliance Jiu Jitsu academy in Brentwood, California, open since January 2007. Kids and teens classes from age 5 in three age groups and adult classes for every level, Monday to Saturday. Head instructor Ricardo Barros, black belt from Ralph Gracie (2003). First class free: adults get a private intro lesson, kids join a normal class.
 
 - Address: ${SITE.street}, ${SITE.city}
 - Phone: ${SITE.phone.display}
@@ -52,7 +52,7 @@ export function llms() {
 ${PROGRAMS.map((p) => `- ${p.name} (${p.ages}): ${p.per} classes a week. ${p.text}`).join('\n')}
 
 ## Weekly schedule
-${WEEK.map((w) => `- ${w.d}: ${w.slots.map((s) => `${s.t} ${s.p}`).join(', ')}`).join('\n')}
+The class schedule is live on the page (the Schedule section), from the academy's booking system.
 
 ## Coaches
 - ${HEAD.name}, head instructor, black belt since 2003
