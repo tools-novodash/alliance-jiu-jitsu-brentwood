@@ -132,6 +132,11 @@ export const IMG = {
     "h": 1440,
     "sm": 820
   },
+  "ig_mat_smile": {
+    "w": 1080,
+    "h": 1437,
+    "sm": 820
+  },
   "ig_purple_belt": {
     "w": 1080,
     "h": 830,

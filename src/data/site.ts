@@ -39,8 +39,10 @@ export const HERO = {
   h1b: 'trains here.',
   sub: 'Ricardo Barros opened this academy in 2007 because he wanted one room where everyone in a family could train. Kids from five, teens from eleven, adults of every level, six days a week.',
   micro: 'Adults get a private intro lesson. Kids join a normal class.',
-  // desktop (Adryan 12/11: horizontal, faces to the camera): a kids class sitting in a circle with their coach
-  photo: img('kids7', 'A kids class sitting in a circle on the mats with their coach at Alliance Jiu Jitsu Brentwood'),
+  // desktop (16/11, Adryan's boss: the wide photo looked low quality and did not say "five or fifty"):
+  // two tall photos side by side, the young end and the older end of the room
+  photo: img('ig_belt_kid', "A coach tying a young student's belt on the mats at Alliance Jiu Jitsu Brentwood"),
+  older: img('ig_mat_smile', 'A smiling man in a black gi kneeling beside two training partners on the mats'),
   // phones only (Adryan 12/11: a more vertical photo there): a coach tying a kid's belt
   tall: img('ig_belt_kid', "A coach tying a young student's belt on the mats at Alliance Jiu Jitsu Brentwood"),
 }
