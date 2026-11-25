@@ -5,7 +5,11 @@ declare global { interface Window { __lenis?: Lenis | null } }
 
 /** Smooth scroll on the GSAP ticker, so ScrollTrigger and Lenis read the same frame (PRD 14). */
 export function startLenis() {
-  const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 1 }) // a touch silkier than the 0.1 default (Adryan 12/11)
+  // lerp: a touch silkier than the 0.1 default (Adryan 12/11).
+  // The kit's booking form (.nd) scrolls on its own. Lenis is stopped while it is open, and a stopped
+  // Lenis cancels every wheel and touchmove it sees, so the form could not scroll down to its Continue
+  // button (same bug as the Lobo, 25/11). Gestures inside .nd are left to the browser.
+  const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 1, prevent: (node) => node.classList.contains('nd') })
   window.__lenis = lenis
   lenis.on('scroll', ScrollTrigger.update)
   const tick = (t: number) => lenis.raf(t * 1000)
